@@ -4,7 +4,7 @@ include 'config.php';
 
 $response=new stdClass();
 
-  $query= "SELECT clienti.nome,clienti.cognome, storico.date, storico.id_trattamento,
+  $query= "SELECT clienti.nome,clienti.cognome,clienti.id, storico.date, storico.id_trattamento,
   trattamento.trattamento
   FROM storico
   join clienti on storico.id_cliente=clienti.id
@@ -27,6 +27,7 @@ if($numero_righe == 0){
 
           $storico= new stdClass();
           // $storico->id_cliente =$result['id_cliente'];
+          $storico->id=$result['id'];
           $storico->trattamento=$result['trattamento'];
           $storico->date=$result['date'];
           $storico->nome=$result['nome'];

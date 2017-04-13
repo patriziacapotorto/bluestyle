@@ -1,4 +1,5 @@
 angular.module('app').service('GestionaleSrv',function($http){
+
   var getClienti= function(){
   return $http({
     method: 'GET',
@@ -9,7 +10,17 @@ angular.module('app').service('GestionaleSrv',function($http){
   })
 }
 
+var deleteCliente = function(id){
+  return $http({
+    method: 'PUT',
+    url: 'http://localhost/bluestyle/elimina_cliente.php?id='+id
+  })
+  .then(getClienti);
+}
+
+
 return{
   getClienti: getClienti,
+  deleteCliente: deleteCliente
 }
 })
